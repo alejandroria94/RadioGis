@@ -21,7 +21,7 @@
         </header>
 
 
-    <body style="background: rgb(13, 55, 93);">
+    <body>
         <jsp:include page="menu.jsp"/>
     <center>
         <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSMfjH-kK0CMeunw_m2bdSt-JSokQwhiswcGKVcmg9dO3099OHFC_ml16b2I2z0bH58_Kl6CETkWOA8/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>

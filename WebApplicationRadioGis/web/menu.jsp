@@ -6,9 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<nav>
+<nav style="margin-bottom: 5%;">
     <div class="nav-wrapper light-blue darken-3">
-        <a href="#" class="brand-logo">Logo</a>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <a href="#" class="brand-logo">  <i class="large material-icons " Style="font-size: 2em;">memory</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="index.jsp">Proyecto IoT</a></li>
             <li><a href="inhibidores.jsp">Luis Miguel</a></li>

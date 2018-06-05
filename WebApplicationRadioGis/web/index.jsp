@@ -11,6 +11,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0">
         <title>Index</title>
+
+
     </head>
 
     <body>
@@ -21,44 +23,59 @@
         </header>
 
 
-    <body style="background: rgb(13, 55, 93);">
+    <body>
 
         <jsp:include page="menu.jsp"/>
-    <center>
-        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTXjiTJY2S054LpHxmdTdJZRKyOveFLHH7fjh7iyL-aRp_7VgUN454U90dorQUl6gBfJbo-RDUBZOed/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-    </center>
 
 
-</body>
+        <div class="container determinate" style="width: 70%">
+            <div class="row">
+                <div class="col s6 blue">
+                    <center style="padding: 5%;">
+                        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTXjiTJY2S054LpHxmdTdJZRKyOveFLHH7fjh7iyL-aRp_7VgUN454U90dorQUl6gBfJbo-RDUBZOed/embed?start=false&loop=false&delayms=3000" frameborder="0" width="100%" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+                    </center>
+
+                </div>
+                <div class="col s6 blue">
+                    <P>
+                        Hola
+                    </P>
+
+                </div>
+
+            </div>
+        </div>
+    </body>
 
 
 
 
 
-<script src="js/particles.min.js"></script>
-<script>
-    window.onload = function () {
+    <script src="js/particles.min.js"></script>
+    <script>
+        window.onload = function () {
 
-        Particles.init({
-            selector: '.header__background',
-            color: '#75A5B7',
-            maxParticles: 130,
-            connectParticles: true,
-            responsive: [
-                {
-                    breakpoint: 768,
-                    options: {
-                        maxParticles: 80
+            Particles.init({
+                selector: '.header__background',
+                color: '#75A5B7',
+                maxParticles: 130,
+                connectParticles: true,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        options: {
+                            maxParticles: 80
+                        }
+                    }, {
+                        breakpoint: 375,
+                        options: {
+                            maxParticles: 50
+                        }
                     }
-                }, {
-                    breakpoint: 375,
-                    options: {
-                        maxParticles: 50
-                    }
-                }
-            ]
-        });
-    };
-</script>
+                ]
+            });
+        };
+    </script>
 </body>
 </html>
