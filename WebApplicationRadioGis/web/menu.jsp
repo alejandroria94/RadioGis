@@ -39,6 +39,7 @@ src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
             <a href="#" class="brand-logo">  <i class="large material-icons " Style="font-size: 2em;">memory</i></a>
             <ul id = "nav-mobile" class = "right hide-on-med-and-down">   
                 <li><a href="index.jsp">Proyecto IoT</a></li>
+                <li><a href="visorDemo.jsp">Visor e3T</a></li>
                 <!-- Dropdown Trigger -->
                 <li>
                     <a class = "dropdown-button" href = "#!" data-activates = "fotoDropDown">Presentaciones proyectos<i class = "material-icons right">arrow_drop_down</i></a>
