@@ -11,7 +11,6 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0">
         <title>monitoreSistemaFotovoltaico</title>
-        <link rel="stylesheet" type="text/css" href="css/materialize.css">
     </head>
     <body>
         <jsp:include page="menu.jsp"/>
