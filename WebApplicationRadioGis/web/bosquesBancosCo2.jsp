@@ -17,7 +17,7 @@
     <body>
         <jsp:include page="menu.jsp"/>
     <center>
-        <iframe src="https://docs.google.com/presentation/d/1KAFZn9P2Svrw3Uv8m19Vk5aeuVXfEOXem22Gcge2Wg8/edit#slide=id.p" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRkjDCarAwGg0R7TjdFnnoOSxJHQeW5S4D4Rq2JzxgHkVcc2W3ffkTz1-aLyUDeeXYxH8wDMyMEh7hb/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
     </center>
     <p>Prueba arnold</p>
 
