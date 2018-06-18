@@ -36,6 +36,7 @@
             <ul id = "nav-mobile" class = "right hide-on-med-and-down">   
                 <li><a href="index.jsp">Proyecto IoT</a></li>
                 <li><a href="visorDemo.jsp">Visor e3T</a></li>
+                <li><a href="demo1.jsp">Visor eisi</a></li>
                 <!-- Dropdown Trigger -->
                 <li>
                     <a class = "dropdown-button" href = "#!" data-activates = "fotoDropDown">Presentaciones proyectos<i class = "material-icons right">arrow_drop_down</i></a>

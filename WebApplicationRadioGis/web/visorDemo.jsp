@@ -27,7 +27,7 @@
 
         <script>
             $.getJSON(
-            'temporal/usdeur.json',
+            'https://cdn.rawgit.com/highcharts/highcharts/057b672172ccc6c08fe7dbb27fc17ebca3f5b770/samples/data/usdeur.json',
                     function (data) {
                     Highcharts.chart('container', {
                     chart: {
@@ -38,7 +38,7 @@
                             },
                             subtitle: {
                             text: document.ontouchstart === undefined ?
-                                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                                    'arrastrar y soltar en el área mostrada para hacer zoom in' : 'Pinch the chart to zoom in'
                             },
                             xAxis: {
                             type: 'datetime'
@@ -79,7 +79,7 @@
                             },
                             series: [{
                             type: 'area',
-                                    name: 'USD to EUR',
+                                    name: 'Frecuencia',
                                     data: data
                             }]
                     });
