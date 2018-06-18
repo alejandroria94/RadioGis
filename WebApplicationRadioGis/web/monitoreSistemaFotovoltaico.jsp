@@ -15,10 +15,10 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0">
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/modules/series-label.js"></script>
-        <script src="https://code.highcharts.com/modules/exporting.js"></script>
-        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="js/highcharts.js"></script>
+        <script src="js/series-label.js"></script>
+        <script src="js/exporting.js"></script>
+        <script src="js/export-data.js"></script>
         <title>monitoreSistemaFotovoltaico</title>
         <style>
             #container {
