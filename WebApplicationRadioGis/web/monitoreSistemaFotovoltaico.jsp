@@ -35,12 +35,13 @@
         <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTnZ7313Jjz2Z4GqCf72AUIi5q7M91IU2aYq8qurB6hP23r-RziD2D_4N0Ndi_DhkqnWxzXAx3NgEjw/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe> 
     </center>
 
-<!--    <a class="waves-effect waves-light btn" target="_blank" href="https://api.enphaseenergy.com/api/v2/systems/752668/energy_lifetime?key=77160fa246179049b64391520f7dc1cd&user_id=4e5459324e7a4d300a"><i class="material-icons left">cloud</i>button</a>
-    <a class="waves-effect waves-light btn" target="_blank" href="https://api.enphaseenergy.com/api/v2/systems?key=77160fa246179049b64391520f7dc1cd&user_id=4e5459324e7a4d300a"><i class="material-icons left">cloud</i>button</a>-->
+    <!--    <a class="waves-effect waves-light btn" target="_blank" href="https://api.enphaseenergy.com/api/v2/systems/752668/energy_lifetime?key=77160fa246179049b64391520f7dc1cd&user_id=4e5459324e7a4d300a"><i class="material-icons left">cloud</i>button</a>
+        <a class="waves-effect waves-light btn" target="_blank" href="https://api.enphaseenergy.com/api/v2/systems?key=77160fa246179049b64391520f7dc1cd&user_id=4e5459324e7a4d300a"><i class="material-icons left">cloud</i>button</a>-->
 
     <%
+        try {
 
-        String a = URLConnectionReader.getdata(URLConnectionReader.URL1);
+            String a = URLConnectionReader.getdata(URLConnectionReader.URL1);
 
 //        JsonObject jo = new JsonParser().parse(a).getAsJsonObject();
     %>
@@ -104,7 +105,11 @@
         });
 
     </script>
-
+    <%
+    
+     } catch (Exception e) {
+            }
+    %>
     <jsp:include page="foot.jsp"/>
 
 </body>
