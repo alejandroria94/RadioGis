@@ -18,7 +18,8 @@ public class ConnectToUrlUsingBasicAuthentication {
     public static String getData() throws IOException {
         String result = "";
         String datos = "";
-        String webPage = "https://backend.sigfox.com/api/devices/1CB377/messages?before=1533850009";
+//        String webPage = "https://backend.sigfox.com/api/devices/1CB377/messages?before=1533513600";
+        String webPage = "https://backend.sigfox.com/api/devices/1CB377/messages";
         String name = "5b5b3bdf5005746298eae733";
         String password = "8db98aeeada8f1d3490bf215a74dbc59";
 

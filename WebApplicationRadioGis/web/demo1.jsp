@@ -4,6 +4,9 @@
     Author     : Fido
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="com.google.gson.JsonElement"%>
 <%@page import="com.google.gson.JsonParser"%>
 <%@page import="com.google.gson.JsonObject"%>
@@ -123,43 +126,46 @@
                     try {
                         String a = ConnectToUrlUsingBasicAuthentication.getData();
                         JsonObject jo = new JsonParser().parse(a).getAsJsonObject();
+                        Date d;
+                        DateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 %>
                 <%=jo.getAsJsonArray("data").size()%>
-                <%
-                    int i=1;
-                    for (JsonElement x : jo.getAsJsonArray("data")) {
-                %>
-                <tr>
-                    <td><%=i%></td>
-                    <td><%=x.getAsJsonObject().get("device")%></td>
-                    <td><%=x.getAsJsonObject().get("time")%></td>
-                    <td><%=x.getAsJsonObject().get("data")%></td>
-                    <td><%=x.getAsJsonObject().get("linkQuality")%></td>
-                    <td><%=x.getAsJsonObject().get("seqNumber")%></td>
-                    <td><%=x.getAsJsonObject().get("rinfos")%></td>
-                </tr>
-                <%
+            <%
+                int i = 1;
+                for (JsonElement x : jo.getAsJsonArray("data")) {
+                    d = new Date(Long.parseLong(x.getAsJsonObject().get("time").toString()) * 1000);
+            %>
+            <tr>
+                <td><%=i%></td>
+                <td><%=x.getAsJsonObject().get("device")%></td>
+                <td><%=f.format(d)%></td>
+                <td><%=x.getAsJsonObject().get("data")%></td>
+                <td><%=x.getAsJsonObject().get("linkQuality")%></td>
+                <td><%=x.getAsJsonObject().get("seqNumber")%></td>
+                <td><%=x.getAsJsonObject().get("rinfos")%></td>
+            </tr>
+            <%
                     i++;
-                    }
-                %>
+                }
+            %>
 
-            </tbody>
-        </table>
-        <script>
-            var datos =<%=a%>;
-        </script>
+        </tbody>
+    </table>
+    <script>
+        var datos =<%=a%>;
+    </script>
 
-        <%
-            } catch (Exception e) {
-            }
-        %>
-
-
+    <%
+        } catch (Exception e) {
+        }
+    %>
 
 
-        <!--fin del contenido de la pagina-->
 
-        <!--footer-->
-        <jsp:include page="foot.jsp"/>
-    </body>
+
+    <!--fin del contenido de la pagina-->
+
+    <!--footer-->
+    <jsp:include page="foot.jsp"/>
+</body>
 </html>
