@@ -130,42 +130,136 @@
                         DateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 %>
                 <%=jo.getAsJsonArray("data").size()%>
-            <%
-                int i = 1;
-                for (JsonElement x : jo.getAsJsonArray("data")) {
-                    d = new Date(Long.parseLong(x.getAsJsonObject().get("time").toString()) * 1000);
-            %>
-            <tr>
-                <td><%=i%></td>
-                <td><%=x.getAsJsonObject().get("device")%></td>
-                <td><%=f.format(d)%></td>
-                <td><%=x.getAsJsonObject().get("data")%></td>
-                <td><%=x.getAsJsonObject().get("linkQuality")%></td>
-                <td><%=x.getAsJsonObject().get("seqNumber")%></td>
-                <td><%=x.getAsJsonObject().get("rinfos")%></td>
-            </tr>
-            <%
-                    i++;
+                <%
+                    int i = 1;
+                    for (JsonElement x : jo.getAsJsonArray("data")) {
+                        d = new Date(Long.parseLong(x.getAsJsonObject().get("time").toString()) * 1000);
+                %>
+                <tr>
+                    <td><%=i%></td>
+                    <td><%=x.getAsJsonObject().get("device")%></td>
+                    <td><%=f.format(d)%></td>
+                    <td><%=x.getAsJsonObject().get("data")%></td>
+                    <td><%=x.getAsJsonObject().get("linkQuality")%></td>
+                    <td><%=x.getAsJsonObject().get("seqNumber")%></td>
+                    <td><%=x.getAsJsonObject().get("rinfos")%></td>
+                </tr>
+                <%
+                        i++;
+                    }
+                %>
+
+            </tbody>
+        </table>
+        <script>
+            var datos =<%=a%>;
+        </script>
+
+        <%
+            } catch (Exception e) {
+            }
+        %>
+
+
+
+        <style>
+            #map{
+                height:400px;
+                width:100%;
+            }
+        </style>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+        <div id="map"></div>
+            <script>
+                function initMap() {
+                    // Map options
+                    var options = {
+                        zoom: 13,
+                        center: {lat: 7.1149349, lng: -73.1078267}
+                    };
+
+                    // New map
+                    var map = new google.maps.Map(document.getElementById('map'), options);
+
+                    // Listen for click on map
+                    google.maps.event.addListener(map, 'click', function (event) {
+                        // Add marker
+                        addMarker({coords: event.latLng});
+                    });
+
+                    
+                     // Add marker
+                     var marker = new google.maps.Marker({
+                     position:{lat:7.1185496,lng:-73.1107119},
+                     map:map,
+                     icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+                     });
+                     
+                     var infoWindow = new google.maps.InfoWindow({
+                     content:'<h1><a href="#">hi</a></h1>'
+                     });
+                     
+                     marker.addListener('click', function(){
+                     infoWindow.open(map, marker);
+                     });
+                     
+
+//                    // Array of markers
+//
+//                    var markers = [];
+//                    var obj = {};
+//                    var obj1 = {};
+//                    obj1["lat"]='7.0';
+//                    obj1["lng"]='-70.0';
+//                    obj["coords"] = obj1;
+//                    obj["content"] = '<h1><a href="#">hi</a></h1>';
+//                    markers.push(obj);
+
+                    // Loop through markers
+                    for (var i = 0; i < markers.length; i++) {
+                        // Add marker
+                        addMarker(markers[i]);
+                    }
+
+                    // Add Marker Function
+                    function addMarker(props) {
+                        var marker = new google.maps.Marker({
+                            position: props.coords,
+                            map: map
+                            //icon:props.iconImage
+                        });
+
+                        // Check for customicon
+                        if (props.iconImage) {
+                            // Set icon image
+                            marker.setIcon(props.iconImage);
+                        }
+
+                        // Check content
+                        if (props.content) {
+                            var infoWindow = new google.maps.InfoWindow({
+                                content: props.content
+                            });
+
+                            marker.addListener('click', function () {
+                                infoWindow.open(map, marker);
+                            });
+                        }
+                    }
                 }
-            %>
+            </script>
 
-        </tbody>
-    </table>
-    <script>
-        var datos =<%=a%>;
-    </script>
-
-    <%
-        } catch (Exception e) {
-        }
-    %>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs65kMNObSGQtLBHceu2U_1EEhwlqGE5M&callback=initMap">
+        </script>	
 
 
+        <!--fin del contenido de la pagina-->
 
-
-    <!--fin del contenido de la pagina-->
-
-    <!--footer-->
-    <jsp:include page="foot.jsp"/>
-</body>
+        <!--footer-->
+        <jsp:include page="foot.jsp"/>
+    </body>
 </html>
