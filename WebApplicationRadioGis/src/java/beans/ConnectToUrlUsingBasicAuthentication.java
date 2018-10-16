@@ -15,11 +15,13 @@ import org.apache.commons.codec.binary.Base64;
 
 public class ConnectToUrlUsingBasicAuthentication {
 
-    public static String getData() throws IOException {
+    public static String URL1 = "https://backend.sigfox.com/api/devices/1CB377/messages";
+    public static String URL2 = "https://backend.sigfox.com/api/devices/43C761/messages";
+
+    public static String getData(String webPage) throws IOException {
         String result = "";
         String datos = "";
 //        String webPage = "https://backend.sigfox.com/api/devices/1CB377/messages?before=1533513600";
-        String webPage = "https://backend.sigfox.com/api/devices/1CB377/messages";
         String name = "5b5b3bdf5005746298eae733";
         String password = "8db98aeeada8f1d3490bf215a74dbc59";
 
