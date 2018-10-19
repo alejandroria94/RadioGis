@@ -12,31 +12,35 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 public class MqttSubscriberSample {
 
 //    private JFramePrincipal ventana;
-    private static MqttSubscriberSample instance = null;
+//    private static MqttSubscriberSample instance = null;
     private SimpleCallback scbCallback;
-    private static Suscriptor suscriptor;
+    private final Suscriptor suscriptor = new Suscriptor();;
 
-    protected MqttSubscriberSample() {
-        // Exists only to defeat instantiation.
-    }
+//    protected MqttSubscriberSample() {
+//        // Exists only to defeat instantiation.
+//    }
+//
+//    public static MqttSubscriberSample getInstance() {
+//        if (instance == null) {
+//            instance = new MqttSubscriberSample();
+//            suscriptor = new Suscriptor();
+//        }
+//        return instance;
+//    }
 
-    public static MqttSubscriberSample getInstance() {
-        if (instance == null) {
-            instance = new MqttSubscriberSample();
-            suscriptor = new Suscriptor();
-        }
-        return instance;
+    public MqttSubscriberSample() {
     }
+    
 
     public Suscriptor getSuscriptor() {
         return suscriptor;
     }
 
-    public void iniciar() {
+    public void iniciar(String topic, String port) {
         this.scbCallback = new SimpleCallback(this);
-        String topic = "UIS/LP210";
+//        String topic = "UIS/LP210";
 //        String broker = "tcp://10.6.101.139:1883";
-        String broker = "tcp://broker.hivemq.com:1883";
+        String broker = "tcp://broker.hivemq.com:"+port;
 //        String broker = "tcp://10.1.50.42:1883";
         String clientId = "prototipo_inhibidor";
 //        char[] password = {'R', 'I', 'o', 'T', 'm', 'o', 'd', 'e', 'l'};

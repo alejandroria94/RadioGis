@@ -5,7 +5,7 @@
  */
 package suscribe;
 
-import javax.swing.JOptionPane;
+import com.google.gson.JsonParser;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
@@ -36,7 +36,19 @@ public class SimpleCallback implements MqttCallback {
         String mensaje = new String(mqttMessage.getPayload());
         System.out.println("Message received:\n\t" + mensaje);
 //        JOptionPane.showMessageDialog(null, mensaje);
-        this.mss.getSuscriptor().setMensaje(mensaje);
+        String tipo = new JsonParser().parse(mensaje).getAsJsonObject().get("tipo").getAsString();
+        if(tipo.equals("rgb")){
+        this.mss.getSuscriptor().setMensajeRgb(mensaje);
+        }
+        if(tipo.equals("humedad")){
+        this.mss.getSuscriptor().setMensajeHumedad(mensaje);
+        }
+        if(tipo.equals("potenciometro")){
+        this.mss.getSuscriptor().setMensajePotenciometro(mensaje);
+        }
+        if(tipo.equals("gas")){
+        this.mss.getSuscriptor().setMensajeGas(mensaje);
+        }
     }
     @Override
     public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
