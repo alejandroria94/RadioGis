@@ -11,7 +11,6 @@
 <%@page import="com.google.gson.JsonParser"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="beans.ConnectToUrlUsingBasicAuthentication"%>
-<%@page import="beans.URLConnectionReader"%>
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
@@ -111,25 +110,20 @@
         <table>
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>device</th>
+                    <th>#</th>
                     <th>time</th>
                     <th>data</th>
-                    <th>linkQuality</th>
-                    <th>seqNumber</th>
-                    <th>rinfos</th>
                 </tr>
             </thead>
 
             <tbody>
                 <%
                     try {
-                        String a = ConnectToUrlUsingBasicAuthentication.getData();
+                        String a = ConnectToUrlUsingBasicAuthentication.getData(ConnectToUrlUsingBasicAuthentication.URL2);
                         JsonObject jo = new JsonParser().parse(a).getAsJsonObject();
                         Date d;
                         DateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 %>
-                <%=jo.getAsJsonArray("data").size()%>
                 <%
                     int i = 1;
                     for (JsonElement x : jo.getAsJsonArray("data")) {
@@ -137,12 +131,8 @@
                 %>
                 <tr>
                     <td><%=i%></td>
-                    <td><%=x.getAsJsonObject().get("device")%></td>
                     <td><%=f.format(d)%></td>
                     <td><%=x.getAsJsonObject().get("data")%></td>
-                    <td><%=x.getAsJsonObject().get("linkQuality")%></td>
-                    <td><%=x.getAsJsonObject().get("seqNumber")%></td>
-                    <td><%=x.getAsJsonObject().get("rinfos")%></td>
                 </tr>
                 <%
                         i++;
@@ -173,39 +163,39 @@
 
 
         <div id="map"></div>
-            <script>
-                function initMap() {
-                    // Map options
-                    var options = {
-                        zoom: 13,
-                        center: {lat: 7.1149349, lng: -73.1078267}
-                    };
+        <script>
+            function initMap() {
+                // Map options
+                var options = {
+                    zoom: 13,
+                    center: {lat: 7.1149349, lng: -73.1078267}
+                };
 
-                    // New map
-                    var map = new google.maps.Map(document.getElementById('map'), options);
+                // New map
+                var map = new google.maps.Map(document.getElementById('map'), options);
 
-                    // Listen for click on map
-                    google.maps.event.addListener(map, 'click', function (event) {
-                        // Add marker
-                        addMarker({coords: event.latLng});
-                    });
+                // Listen for click on map
+                google.maps.event.addListener(map, 'click', function (event) {
+                    // Add marker
+                    addMarker({coords: event.latLng});
+                });
 
-                    
-                     // Add marker
-                     var marker = new google.maps.Marker({
-                     position:{lat:7.1185496,lng:-73.1107119},
-                     map:map,
-                     icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-                     });
-                     
-                     var infoWindow = new google.maps.InfoWindow({
-                     content:'<h1><a href="#">hi</a></h1>'
-                     });
-                     
-                     marker.addListener('click', function(){
-                     infoWindow.open(map, marker);
-                     });
-                     
+
+                // Add marker
+                var marker = new google.maps.Marker({
+                    position: {lat: 7.1149349, lng: -73.1107119},
+                    map: map,
+                    icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+                });
+
+                var infoWindow = new google.maps.InfoWindow({
+                    content: '<h1><a href="#">hi</a></h1>'
+                });
+
+                marker.addListener('click', function () {
+                    infoWindow.open(map, marker);
+                });
+
 
 //                    // Array of markers
 //
@@ -218,39 +208,39 @@
 //                    obj["content"] = '<h1><a href="#">hi</a></h1>';
 //                    markers.push(obj);
 
-                    // Loop through markers
-                    for (var i = 0; i < markers.length; i++) {
-                        // Add marker
-                        addMarker(markers[i]);
+                // Loop through markers
+                for (var i = 0; i < markers.length; i++) {
+                    // Add marker
+                    addMarker(markers[i]);
+                }
+
+                // Add Marker Function
+                function addMarker(props) {
+                    var marker = new google.maps.Marker({
+                        position: props.coords,
+                        map: map
+                                //icon:props.iconImage
+                    });
+
+                    // Check for customicon
+                    if (props.iconImage) {
+                        // Set icon image
+                        marker.setIcon(props.iconImage);
                     }
 
-                    // Add Marker Function
-                    function addMarker(props) {
-                        var marker = new google.maps.Marker({
-                            position: props.coords,
-                            map: map
-                            //icon:props.iconImage
+                    // Check content
+                    if (props.content) {
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: props.content
                         });
 
-                        // Check for customicon
-                        if (props.iconImage) {
-                            // Set icon image
-                            marker.setIcon(props.iconImage);
-                        }
-
-                        // Check content
-                        if (props.content) {
-                            var infoWindow = new google.maps.InfoWindow({
-                                content: props.content
-                            });
-
-                            marker.addListener('click', function () {
-                                infoWindow.open(map, marker);
-                            });
-                        }
+                        marker.addListener('click', function () {
+                            infoWindow.open(map, marker);
+                        });
                     }
                 }
-            </script>
+            }
+        </script>
 
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs65kMNObSGQtLBHceu2U_1EEhwlqGE5M&callback=initMap">

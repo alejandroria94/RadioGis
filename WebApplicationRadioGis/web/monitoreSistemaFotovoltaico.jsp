@@ -4,9 +4,9 @@
     Author     : fidolinux
 --%>
 
+<%@page import="beans.gripv.URLConnectionReader"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="com.google.gson.JsonParser"%>
-<%@page import="beans.URLConnectionReader"%>
 <%@page import="java.net.HttpURLConnection"%>
 <%@page import="java.net.URL"%>
 <!DOCTYPE html>
